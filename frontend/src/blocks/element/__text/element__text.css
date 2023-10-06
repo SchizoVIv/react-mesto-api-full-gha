@@ -1,0 +1,13 @@
+.element__text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #000;
+  padding: 0 20px 25px 21px;
+}
+@media screen and (max-width: 767px) {
+    .element__text {
+        padding: 2px 20px 31px 21px;
+      }
+}

@@ -1,0 +1,28 @@
+.header {
+  max-width: 880px;
+  width: 100%;
+  min-height: 74px;
+  margin: 0 auto;
+  padding: 45px 0 0;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
+  background-image: url(../../image/logo.svg);
+  background-position: 0 50%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: right;
+}
+@media screen and (max-width: 1024px) {
+    .header{
+        background-position: 7% 50%;
+      }
+}
+@media screen and (max-width: 767px) {
+    .header {
+        max-width: 767px;
+        min-height: 56px;
+        margin: 0 auto;
+        padding: 28px 0 0;
+        background-size: 103.74px 24.4px;
+        background-position: 27px 50%;
+      }
+}

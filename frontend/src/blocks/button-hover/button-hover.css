@@ -1,0 +1,9 @@
+.button-hover:hover{
+  opacity: 60%;
+}
+
+@media screen and (max-width: 767px) {
+  .button-hover:hover{
+    opacity: 100%;
+  }
+}

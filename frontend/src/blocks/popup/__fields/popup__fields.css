@@ -1,0 +1,8 @@
+.popup__fields{
+  margin: 45px 0 48px;
+}
+@media screen and (max-width: 767px) {
+    .popup__fields{
+        margin: 75px 0 45px;
+      }
+}

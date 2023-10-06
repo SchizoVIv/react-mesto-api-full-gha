@@ -1,0 +1,20 @@
+.element__like-button {
+  width: 22px;
+  height: 19px;
+  padding: 0;
+  border: none;
+  background: none;
+  transition: 0.5s ease;
+  background-image: url(../../../image/like.svg);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.element__like-button:hover{
+  opacity: 50%;
+}
+@media screen and (max-width: 767px) {
+  .element__like-button:hover{
+    opacity: 100%;
+  }
+}

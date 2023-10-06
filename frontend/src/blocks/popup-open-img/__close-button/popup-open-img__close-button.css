@@ -1,0 +1,12 @@
+.popup-open-img__close-button{
+  margin: 0;
+  right: -40px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .popup-open-img__close-button{
+    right: 0;
+  }
+}
+

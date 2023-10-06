@@ -1,0 +1,9 @@
+.profile__texts {
+  align-self: center;
+  margin: 0 0 0 30px;
+}
+@media screen and (max-width: 767px) {
+    .profile__texts{
+        padding: 26px 0 32px;
+      }
+}
