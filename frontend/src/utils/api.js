@@ -18,6 +18,7 @@ class Api {
         'Content-Type': 'application/json'
       },
     })
+      .then(console.log(localStorage.getItem("jwt")))
       .then(res => this._getResponseData(res))
   }
 

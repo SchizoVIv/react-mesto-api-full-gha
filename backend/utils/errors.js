@@ -33,9 +33,7 @@ class NotFoundError extends Error {
   }
 }
 
-const error404 = (req, res, next) => {
-  return next(new NotFoundError('Ошибка 404. Страница не найдена'));
-};
+const error404 = (req, res, next) => next(new NotFoundError('Ошибка 404. Страница не найдена'));
 
 module.exports = {
   ConflictError,

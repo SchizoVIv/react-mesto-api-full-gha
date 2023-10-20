@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Route, Routes, Navigate, useNavigate, useLocation } from "react-router-dom"
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom"
 import '../index.css';
 import Header from "./Header.js";
 import Main from "./Main.js";
@@ -40,7 +40,14 @@ function App() {
     api
       .getProfileFromServer()
       .then(res => {
-        setCurrentUser(res)
+        setCurrentUser({
+          _id: res.user._id,
+          name: res.user.name,
+          about: res.user.about,
+          avatar: res.user.avatar,
+          email: res.user.email
+        });
+        // setCurrentUser(res);
       })
       .catch(err => {
         console.error(`Error:${err} - ${err.statusText}`)
@@ -110,8 +117,8 @@ function App() {
       api
         .removeLike(card._id)
     )
-      .then(newCard =>
-        setCards(state => state.map(c => (c._id === card._id ? newCard : c))))
+      .then(newCard => {
+        setCards(state => state.map(c => (c._id === card._id ? newCard : c)))})
       .catch((error) => console.log(`Ошибка: ${error}`))
   }
 
@@ -134,6 +141,7 @@ function App() {
       .updateUserAvatar(newUserInfo)
       .then((data) => {
         setCurrentUser(data)
+        console.log(data)
         closeAllPopups()
       })
       .catch((error) => console.log(`Ошибка: ${error}`))
