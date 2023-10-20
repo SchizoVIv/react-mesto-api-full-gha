@@ -173,7 +173,7 @@ function App() {
     auth
       .login(email, password)
       .then((res) => {
-        localStorage.setItem("jwt", res.token)
+        // localStorage.setItem("jwt", res.token)
         setEmail(email)
         setLoggingIn(true);
         navigate("/");
@@ -187,10 +187,9 @@ function App() {
   }
 
   function checkToken() {
-    const jwt = localStorage.getItem("jwt")
-    if (jwt){
+    // const jwt = localStorage.getItem("jwt")
       auth
-        .getContent(jwt)
+        .getContent()
         .then((res) => {
           if(!res) {
             return;
@@ -201,7 +200,7 @@ function App() {
         })
         .catch((error) => {
           setLoggingIn(false)
-          console.log(`Ошибка: ${error}`)})}
+          console.log(`Ошибка: ${error}`)})
 
   }
 

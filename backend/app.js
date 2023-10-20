@@ -11,7 +11,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const handleErrors = require('./utils/handleErrors');
 const router = require('./routes');
 
-const { PORT = 3000, MY_DB = 'mongodb://127.0.0.1:27017/vycohort69' } = process.env;
+const { PORT = 3001, MY_DB = 'mongodb://127.0.0.1:27017/vycohort69' } = process.env;
 
 const app = express();
 app.use(cors);
@@ -44,5 +44,5 @@ app.use(errors());
 app.use(handleErrors);
 
 app.listen(PORT, () => {
-  console.log('hi port 3000');
+  console.log('hi port 3001');
 });
