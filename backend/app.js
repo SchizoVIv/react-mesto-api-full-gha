@@ -23,6 +23,12 @@ mongoose.connect(MY_DB, {
   console.log('error db');
 });
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 dotenv.config();
 
 app.use(cookieParser());
