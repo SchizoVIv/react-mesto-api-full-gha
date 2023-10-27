@@ -1,6 +1,6 @@
 const authRouter = require('express').Router();
 const bodyParser = require('body-parser');
-const { createUser, login } = require('../controllers/users');
+const { createUser, login, logout } = require('../controllers/users');
 const {
   signinValidation,
   signupValidation,
@@ -8,6 +8,7 @@ const {
 
 authRouter.post('/signup', signupValidation, createUser);
 authRouter.post('/signin', signinValidation, login);
+authRouter.post('/logout', logout);
 
 authRouter.use(bodyParser.json());
 

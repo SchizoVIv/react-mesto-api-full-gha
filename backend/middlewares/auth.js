@@ -6,6 +6,10 @@ const { JWT_SECRET, NODE_ENV } = process.env;
 const auth = (req, res, next) => {
   const { authorization } = req.headers;
   const bearer = 'Bearer ';
+
+  if (!authorization || !authorization.startsWith(bearer)) {
+    return next(new UnauthorizedError('Доступ отклонен'));
+  }
   const token = authorization.replace(bearer, '');
 
   if (!token) {

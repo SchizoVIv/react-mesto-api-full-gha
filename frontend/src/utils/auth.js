@@ -54,3 +54,13 @@ export const getContent = () => {
   })
   .then(checkResponse)
 }
+
+export const logout = () => {
+  console.log('ext')
+  return fetch(`${BASE_URL}/logout`, {
+    method: 'POST',
+    credentials: 'include'
+  }).then(res =>
+    res.ok ? res.json() : Promise.reject(`Ошибка удаления токена ${res.status} - ${res.statusText}`)
+  );
+};

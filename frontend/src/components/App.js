@@ -31,37 +31,41 @@ function App() {
   const [currentUser, setCurrentUser] = useState({})
   const [isloggingIn, setLoggingIn] = useState(false)
   const navigate = useNavigate()
-  const [isEmail, setEmail] = useState("")
+  const [isEmail, setEmail] = useState('')
   const [isInfoTooltip, setInfoTooltip] = useState(false);
   const [isRegisterMessage, setRegisterMessage] = useState(false);
 
 
   useEffect(() => {
-    api
-      .getProfileFromServer()
-      .then(res => {
-        setCurrentUser({
-          _id: res.user._id,
-          name: res.user.name,
-          about: res.user.about,
-          avatar: res.user.avatar,
-          email: res.user.email
-        });
-        // setCurrentUser(res);
-      })
-      .catch(err => {
-        console.error(`Error:${err} - ${err.statusText}`)
-      })
+    if (isloggingIn) {
+      api
+        .getProfileFromServer()
+        .then(res => {
+          console.log(res)
+          console.log(res.user)
+          setCurrentUser({
+            _id: res.user._id,
+            name: res.user.name,
+            about: res.user.about,
+            avatar: res.user.avatar,
+            email: res.user.email
+          });
+          // setCurrentUser(res);
+        })
+        .catch(err => {
+          console.error(`Error:${err} - ${err.statusText}`)
+        })
 
-    api
-      .getCardsFromServer()
-      .then(cardsData => {
-        setCards(cardsData);
-      })
-      .catch(err => {
-        console.error(`Error:${err} - ${err.statusText}`)
-      })
-  }, []);
+      api
+        .getCardsFromServer()
+        .then(cardsData => {
+          setCards(cardsData);
+        })
+        .catch(err => {
+          console.error(`Error:${err} - ${err.statusText}`)
+        })
+    }
+  }, [isloggingIn]);
 
   useEffect(() => {
     checkToken()
@@ -216,7 +220,11 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="root">
         <div className="page">
-          <Header email={isEmail} />
+          <Header
+            isloggingIn={isloggingIn}
+            email={isEmail}
+            setLoggingIn={setLoggingIn}
+            setCurrentUser={setCurrentUser} />
           <Routes>
             <Route path="/" element={
                 <ProtectedRoute

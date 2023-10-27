@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import * as auth from '../utils/auth';
 
 function Header(props) {
 
@@ -7,8 +8,18 @@ function Header(props) {
   const navigate = useNavigate();
 
   function signOut() {
-    localStorage.removeItem('jwt');
-    navigate('/sign-in');
+    auth
+      .logout()
+      .then(res => {
+        if (res) {
+          props.setLoggingIn(false);
+          props.setCurrentUser('');
+          navigate('/sign-in', { replace: true });
+        }
+      })
+      .catch(err => {
+        console.error(`Возникла ошибка авторизации:${err} `);
+      });
   }
 
   return (

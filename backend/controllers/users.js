@@ -30,7 +30,6 @@ const getUserById = (req, res, next) => {
 
 const getUser = (req, res, next) => {
   const userId = req.user._id;
-
   UserModel.findById(userId)
     .then((user) => {
       if (user === null) throw new NotFoundError('Cписок пользователей пуст');
@@ -147,6 +146,16 @@ const login = async (req, res, next) => {
   }
 };
 
+const logout = async (req, res) => {
+  if (res.cookie) {
+    await res.clearCookie('jwt');
+    res.status(200).send({ message: 'Вы вышли из своего аккаунта' });
+  }
+  if (!res.cookie) {
+    throw new BadRequestError('Неверные данные авторизации');
+  }
+};
+
 module.exports = {
   getUsers,
   getUserById,
@@ -155,4 +164,5 @@ module.exports = {
   updateAvatar,
   login,
   getUser,
+  logout,
 };
