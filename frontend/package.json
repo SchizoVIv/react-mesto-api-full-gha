@@ -18,8 +18,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "homepage": "https://schizoviv.github.io/react-mesto-auth/"
+    "homepage": "https://schizoviv.github.io/react-mesto-auth/",
+    "deploy": "npm run build && scp -r ./build/* vlada@158.160.116.177:/home/vlada/react-mesto-api-full-gha/frontend/build"
   },
   "eslintConfig": {
     "extends": [

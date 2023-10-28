@@ -112,19 +112,6 @@ const api = new Api(
   {
     //baseUrl: 'http://localhost:3001',
     baseUrl: 'http://mestob.schizovi.students.nomoredomainsrocks.ru',
-    // headers: {
-    //   authorization: `Bearer ${localStorage.getItem("jwt")}`,
-    //   'Content-Type': 'application/json'
-    // }
   })
-
-  // const api = new Api(
-  //   {
-  //     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-65',
-  //     headers: {
-  //       authorization: '1e197306-3c80-4dea-abe5-170206fcfc3b',
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
 
 export default api;
