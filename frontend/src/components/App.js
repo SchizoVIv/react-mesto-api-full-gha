@@ -37,6 +37,22 @@ function App() {
 
 
   useEffect(() => {
+    if (localStorage.jwt) {
+      auth
+        .getToken(localStorage.jwt)
+        .then((res) => {
+          setEmail(res.email);
+          setLoggingIn(true);
+          navigate('/');
+        })
+        .catch((res) => {
+          setLoggingIn(false);
+          navigate('/sign-in');
+        });
+    }
+  }, [])
+
+  useEffect(() => {
     if (isloggingIn) {
       api
         .getProfileFromServer()

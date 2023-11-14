@@ -55,6 +55,17 @@ export const getContent = () => {
   .then(checkResponse)
 }
 
+export const getToken = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+}
+
 export const logout = () => {
   console.log('ext')
   return fetch(`${BASE_URL}/logout`, {
